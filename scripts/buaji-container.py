@@ -18,14 +18,17 @@ def send_prompt_to_llm(prompt, model_name="gemma"):
         return "Error in LLM response"
 
 def get_changed_files():
-    result = subprocess.run(["git", "diff", "--name-only", "HEAD^", "HEAD"], capture_output=True, text=True)
+    result = subprocess.run(["git", "diff", "--name-only", "HEAD~1", "HEAD"], capture_output=True, text=True)
     return result.stdout.strip().split("\n")
 
 if __name__ == "__main__":
     print("Starting AI Code Review...")
 
     changed_files = get_changed_files()
+    print(f"Changed files: {changed_files}")  # Debug: Print all changed files
+
     cs_files = [file for file in changed_files if file.endswith(".cs")]
+    print(f"C# files to review: {cs_files}")  # Debug: Print filtered C# files
 
     if not cs_files:
         print("No C# files changed, skipping review.")
