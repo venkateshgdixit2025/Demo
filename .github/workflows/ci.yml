@@ -41,4 +41,4 @@ jobs:
         run: python scripts/buaji-container.py
 
       - name: Stop Ollama Server (Cleanup)
-        run: pkill ollama
+        run: kill -9 $(pgrep ollama) || true
