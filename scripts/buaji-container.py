@@ -56,7 +56,7 @@ if __name__ == "__main__":
     # an array of rules to check against
     rules = []
 
-    with open('rules.md', 'r') as file:
+    with open('scripts/rules.md', 'r') as file:
         for line in file:
             # Strip whitespace and add non-empty lines to the rules array
             stripped_line = line.strip()
