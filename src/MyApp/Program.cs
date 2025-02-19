@@ -12,7 +12,7 @@ namespace MyApp
             string password = "SuperSecret123"; 
 
             // ❌ Rule Violation: Unused variable
-            int unusedVariable = 42; 
+            int unusedValue = 42; 
 
             // ❌ Rule Violation: Inefficient string concatenation in a loop
             string result = "";
