@@ -21,4 +21,4 @@ jobs:
 
       - name: Run AI Code Review
         run: |
-          python scripts/ai_code_review.py
+          python scripts/buaji-container.py
