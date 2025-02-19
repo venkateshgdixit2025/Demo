@@ -1,24 +1,41 @@
-name: AI Code Review
+name: AI Code Review with Ollama
 
-on: [push]
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  ai-review:
+  review:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Install Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          export PATH=$HOME/.ollama/bin:$PATH
+          echo "$HOME/.ollama/bin" >> $GITHUB_PATH
+
+      - name: Pull LLM Model (Gemma)
+        run: ollama pull gemma
+
+      - name: Start Ollama Server
+        run: |
+          ollama serve &
+          sleep 5  # Wait for server to start
+
+      - name: Set Up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
+      - name: Install Dependencies
+        run: pip install -r scripts/requirements.txt
 
       - name: Run AI Code Review
-        run: |
-          python scripts/buaji-container.py
+        run: python scripts/buaji-container.py
+
+      - name: Stop Ollama Server (Cleanup)
+        run: pkill ollama
