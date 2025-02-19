@@ -9,7 +9,7 @@ namespace MyApp
             Console.WriteLine("Hello, World!");
 
             int x = 10; // Example of a meaningful variable name
-            int y = 20;
+            int y = 30;
 
             int result = Add(x, y);
             Console.WriteLine($"The result is: {result}");
