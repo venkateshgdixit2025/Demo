@@ -8,16 +8,20 @@ namespace MyApp
         {
             Console.WriteLine("Hello, World!");
 
-            int x = 10; // Example of a meaningful variable name
-            int y = 40;
+            // ❌ Rule Violation: Hardcoded credentials
+            string password = "SuperSecret123"; 
 
-            int result = Add(x, y);
-            Console.WriteLine($"The result is: {result}");
-        }
+            // ❌ Rule Violation: Unused variable
+            int unusedVariable = 42; 
 
-        static int Add(int a, int b)
-        {
-            return a + b;
+            // ❌ Rule Violation: Inefficient string concatenation in a loop
+            string result = "";
+            for (int i = 0; i < 10; i++)
+            {
+                result += i.ToString();  // This should use StringBuilder instead
+            }
+
+            Console.WriteLine("Processing complete.");
         }
     }
 }
