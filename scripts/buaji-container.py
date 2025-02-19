@@ -6,6 +6,7 @@ import time
 import sys
 import os
 
+os.chdir('scripts')
 # Function to send a prompt to the LLM and return the response.
 def send_prompt_to_llm(prompt, model_name="gemma", max_retries=2, retry_delay=1):
     url = "http://localhost:11434/api/generate"
@@ -56,7 +57,7 @@ if __name__ == "__main__":
     # an array of rules to check against
     rules = []
 
-    with open('scripts/rules.md', 'r') as file:
+    with open('rules.md', 'r') as file:
         for line in file:
             # Strip whitespace and add non-empty lines to the rules array
             stripped_line = line.strip()
