@@ -9,10 +9,7 @@ namespace MyApp
             Console.WriteLine("Hello, World!");
 
             // Rule Violation: Hardcoded credentials
-            string password = "SuperSecret123"; 
-
-            // Rule Violation: Unused variable
-            int unusedVariable = 42; 
+            string password = "SuperSecret123";
 
             // Rule Violation: Inefficient string concatenation in a loop
             string result = "";
