@@ -11,6 +11,9 @@ namespace MyApp
             // Rule Violation: Hardcoded credentials
             string password = "SuperSecret123";
 
+            // Rule Violation: Unused variable
+            int unusedVariable = 42; 
+
             // Rule Violation: Inefficient string concatenation in a loop
             string result = "";
             for (int i = 0; i < 50; i++)
